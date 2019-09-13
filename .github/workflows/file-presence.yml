@@ -5,9 +5,10 @@ jobs:
   file_presence:
     runs-on: ubuntu-latest
     steps:
-    - uses: JJ/files-present-action@releases/v1
-    - name: "Check for a set of files"
-      files:
-        - package.json
-        - LICENSE
-        - README.md
+      - name: "Check file presence"
+        uses: JJ/files-present-action@releases/v1
+        with:
+          files:
+            - package.json
+            - LICENSE
+            - README.md
