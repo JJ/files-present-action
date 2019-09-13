@@ -7,17 +7,14 @@ async function run() {
       const fileList = files.split(/,\s+/)
       var doesntExist = ''
       fileList.forEach( function( file ) {          
-          fs.stat(file, (exists) => {
-              if (exists == null) {
-                  return true;
-              } else if (exists.code === 'ENOENT') {
-                  doesntExist += ", " + file 
-              }
-          });
+          if ( ! fs.existsSync(file) ) {
+              console.log( "File " + file + " missing " ) 
+              doesntExist += ", " + file
+          }
       })
-      console.log("Missing files: ${doesntExist}")
+      console.log("Missing files: " + doesntExist)
       if (doesntExist ) {
-          core.setFailed( "These files do not exist: ${doestnExist}" )
+          core.setFailed( "These files do not exist: " + doesntExist )
       }
 
   } catch (error) {
