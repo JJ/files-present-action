@@ -5,7 +5,6 @@ async function run() {
   try {
       const files = core.getInput('files')
       const fileList = files.split(/,\s+/)
-      console.log(fileList)
       var doesntExist = ''
       fileList.forEach( function( file ) {          
           fs.stat(file, (exists) => {
@@ -15,10 +14,11 @@ async function run() {
                   doesntExist += ", " + file 
               }
           });
-          if (doesntExist ) {
-              core.setFailed( "These files do not exist: ${doestnExist}" )
-          }
       })
+      console.log("Missing files: ${doesntExist}")
+      if (doesntExist ) {
+          core.setFailed( "These files do not exist: ${doestnExist}" )
+      }
 
   } catch (error) {
       core.setFailed(error.message);
