@@ -11,7 +11,6 @@ async function run() {
               doesntExist.push( file )
           }
       })
-      console.log("Missing files: " + doesntExist.join( ", " ) )
       if (doesntExist.length > 0 ) {
           core.setFailed( "These files do not exist: " + doesntExist.join( ", " ) )
       }
