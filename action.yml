@@ -1,10 +1,9 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'files-present-action'
+description: 'Checks for presence of files'
+author: 'JJ'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  files:
+    description: 'Array describing the files'
 runs:
   using: 'node12'
   main: 'lib/main.js'
