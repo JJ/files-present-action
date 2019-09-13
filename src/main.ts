@@ -12,7 +12,7 @@ async function run() {
           }
       })
       console.log("Missing files: " + doesntExist.join( ", " ) )
-      if (doesntExist ) {
+      if (doesntExist.lenght > 0 ) {
           core.setFailed( "These files do not exist: " + doesntExist.join( ", " ) )
       }
 
