@@ -8,4 +8,4 @@ jobs:
       - name: "Check file presence"
         uses: JJ/files-present-action@releases/v1
         with:
-          files: "package.json, LICENSE, README.md"
+          files: "package.json, LICENSE, README.md, foo"
