@@ -5,16 +5,15 @@ async function run() {
   try {
       const files = core.getInput('files')
       const fileList = files.split(/,\s+/)
-      var doesntExist = ''
+      var doesntExist: string[] = []
       fileList.forEach( function( file ) {          
           if ( ! fs.existsSync(file) ) {
-              console.log( "File " + file + " missing " ) 
-              doesntExist += ", " + file
+              doesntExist.push( file )
           }
       })
-      console.log("Missing files: " + doesntExist)
+      console.log("Missing files: " + doesntExist.join( ", " ) )
       if (doesntExist ) {
-          core.setFailed( "These files do not exist: " + doesntExist )
+          core.setFailed( "These files do not exist: " + doesntExist.join( ", " ) )
       }
 
   } catch (error) {
