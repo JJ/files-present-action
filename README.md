@@ -1,9 +1,23 @@
-# JavaScript Action Template
+# Checks for the presence of files in the repository
 
-This template offers an easy way to get started writing a JavaScript action with TypeScript compile time support, unit testing with Jest and using the GitHub Actions Toolkit.
+This is a basic sanity check for files that need to be there. Will
+complain if they are missing, or changed name
 
-## Getting Started
+# Use it
 
-See the walkthrough located [here](https://github.com/actions/toolkit/blob/master/docs/typescript-action.md).
+Include something like this in a `file-presence.yml` file:
 
-In addition to walking your through how to create an action, it also provides strategies for versioning, releasing and referencing your actions.
+```yaml
+name: "File presence check"
+on: [pull_request, push]
+
+jobs:
+  file_presence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: "Check file presence"
+        uses: JJ/files-present-action@releases/v1
+        with:
+          files: "package.json, LICENSE, README.md, foo, bar"
+```
